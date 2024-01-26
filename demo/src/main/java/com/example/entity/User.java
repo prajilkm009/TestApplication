@@ -4,21 +4,19 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="USER_TAB")
+@Table(name="TEST")
 @Data
 public class User {
 	
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
 	private String id;
 	
 	@Column(name="FIRST_NAME")
@@ -44,8 +42,79 @@ public class User {
 	
 	@PrePersist
 	protected void onCreate() {
-	   this.id=UUID.randomUUID().toString();
+	   this.setId(UUID.randomUUID().toString());
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddeleName() {
+		return middeleName;
+	}
+
+	public void setMiddeleName(String middeleName) {
+		this.middeleName = middeleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getShippingAddress() {
+		return shippingAddress;
+	}
+
+	public void setShippingAddress(String shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
+	public String getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 
 }
