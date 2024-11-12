@@ -1,11 +1,15 @@
 package com.email.sample.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.email.sample.value.EmailMessage;
 
@@ -18,12 +22,17 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/email")
 public class EmailController {
 	
+	@GetMapping("/employees")
+	  List<String> all() {
+	    return new ArrayList<String>();
+	  }
+	
 	@PostMapping("/send")
-	private String sendEmail(@RequestBody EmailMessage message) throws AddressException, MessagingException {
+	private @ResponseBody String sendEmail(@RequestBody EmailMessage message) throws AddressException, MessagingException {
 		
 		String host = "send.smtp.mailtrap.io";
 	      //configure Mailtrap's SMTP server details
